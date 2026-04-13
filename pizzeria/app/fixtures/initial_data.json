@@ -1,0 +1,148 @@
+[
+  {
+    "model": "app.category",
+    "pk": 1,
+    "fields": {
+      "name": "Класика",
+      "slug": "classic"
+    }
+  },
+  {
+    "model": "app.category",
+    "pk": 2,
+    "fields": {
+      "name": "М'ясна",
+      "slug": "meat"
+    }
+  },
+  {
+    "model": "app.category",
+    "pk": 3,
+    "fields": {
+      "name": "Вегетаріанська",
+      "slug": "veg"
+    }
+  },
+  {
+    "model": "app.category",
+    "pk": 4,
+    "fields": {
+      "name": "Гостра",
+      "slug": "spicy"
+    }
+  },
+  {
+    "model": "app.pizza",
+    "pk": 1,
+    "fields": {
+      "name": "Маргарита",
+      "category": 1,
+      "description": "Класика жанру — тонке тісто, томатний соус і ніжна моцарела.",
+      "ingredients": "Томатний соус, моцарела, свіжі помідори, базилік, оливкова олія",
+      "image_url": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80",
+      "price_small": "149.00",
+      "price_medium": "199.00",
+      "price_large": "249.00",
+      "price_xl": "299.00",
+      "is_spicy": false,
+      "is_vegetarian": true,
+      "is_available": true,
+      "is_new": false
+    }
+  },
+  {
+    "model": "app.pizza",
+    "pk": 2,
+    "fields": {
+      "name": "Пепероні",
+      "category": 2,
+      "description": "Соковита пікантна пепероні на хрусткому тісті з подвійним сиром.",
+      "ingredients": "Томатний соус, моцарела, пепероні, орегано",
+      "image_url": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&q=80",
+      "price_small": "169.00",
+      "price_medium": "219.00",
+      "price_large": "269.00",
+      "price_xl": "319.00",
+      "is_spicy": true,
+      "is_vegetarian": false,
+      "is_available": true,
+      "is_new": false
+    }
+  },
+  {
+    "model": "app.pizza",
+    "pk": 3,
+    "fields": {
+      "name": "Чотири сири",
+      "category": 1,
+      "description": "Чотири види сиру на вершковому соусі — справжнє блаженство для сиролюбів.",
+      "ingredients": "Вершковий соус, моцарела, пармезан, горгонзола, чеддер",
+      "image_url": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
+      "price_small": "179.00",
+      "price_medium": "229.00",
+      "price_large": "279.00",
+      "price_xl": "339.00",
+      "is_spicy": false,
+      "is_vegetarian": true,
+      "is_available": true,
+      "is_new": false
+    }
+  },
+  {
+    "model": "app.pizza",
+    "pk": 4,
+    "fields": {
+      "name": "Барбекю з куркою",
+      "category": 2,
+      "description": "Соковита курка з димним соусом барбекю та карамелізованою цибулею.",
+      "ingredients": "Соус BBQ, моцарела, куряче філе, червона цибуля, болгарський перець, кукурудза",
+      "image_url": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80",
+      "price_small": "175.00",
+      "price_medium": "225.00",
+      "price_large": "275.00",
+      "price_xl": "325.00",
+      "is_spicy": false,
+      "is_vegetarian": false,
+      "is_available": true,
+      "is_new": true
+    }
+  },
+  {
+    "model": "app.pizza",
+    "pk": 5,
+    "fields": {
+      "name": "Діябло",
+      "category": 4,
+      "description": "Для справжніх любителів гострого — суміш перців і халапеньо.",
+      "ingredients": "Гострий томатний соус, моцарела, пепероні, халапеньо, чилі, червона цибуля",
+      "image_url": "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=600&q=80",
+      "price_small": "172.00",
+      "price_medium": "222.00",
+      "price_large": "272.00",
+      "price_xl": "322.00",
+      "is_spicy": true,
+      "is_vegetarian": false,
+      "is_available": true,
+      "is_new": false
+    }
+  },
+  {
+    "model": "app.pizza",
+    "pk": 6,
+    "fields": {
+      "name": "Грибна",
+      "category": 3,
+      "description": "Ароматні гриби з трюфельним маслом та зеленню.",
+      "ingredients": "Вершковий соус, моцарела, шампіньйони, печериці, трюфельна олія, тимʼян",
+      "image_url": "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=600&q=80",
+      "price_small": "165.00",
+      "price_medium": "215.00",
+      "price_large": "265.00",
+      "price_xl": "315.00",
+      "is_spicy": false,
+      "is_vegetarian": true,
+      "is_available": true,
+      "is_new": true
+    }
+  }
+]

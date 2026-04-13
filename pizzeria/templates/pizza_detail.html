@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ pizza.name }} - PizzaHubEgorka{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="page-header">
+        <h1>{{ pizza.name }}</h1>
+        <p class="page-subtitle">Оберіть розмір та оформіть замовлення</p>
+    </div>
+
+    <div class="detail-layout">
+        <div class="detail-visual">
+            {% if pizza.image_url %}
+            <img src="{{ pizza.image_url }}" alt="{{ pizza.name }}">
+            {% else %}
+            <div class="detail-visual-placeholder">🍕</div>
+            {% endif %}
+        </div>
+
+        <div class="detail-info">
+            <h1>{{ pizza.name }}</h1>
+            <div class="detail-badges">
+                {% if pizza.is_new %}<span class="pizza-badge pizza-badge--new">Новинка</span>{% endif %}
+                {% if pizza.is_spicy %}<span class="pizza-badge pizza-badge--spicy">Гостра</span>{% endif %}
+                {% if pizza.is_vegetarian %}<span class="pizza-badge pizza-badge--veg">Вегетаріанська</span>{% endif %}
+            </div>
+            {% if pizza.description %}
+            <p class="detail-desc">{{ pizza.description }}</p>
+            {% endif %}
+            {% if pizza.ingredients %}
+            <div class="ingredients-block">
+                <h3>Склад</h3>
+                <p>{{ pizza.ingredients }}</p>
+            </div>
+            {% endif %}
+            <div class="size-order-block">
+                <h3>Оберіть розмір</h3>
+                <div class="size-options">
+                    <a href="{% url 'order_create' pizza.pk %}?size=small" class="size-option">
+                        <span class="size-option__label">Маленька</span>
+                        <span class="size-option__name">25 см</span>
+                        <span class="size-option__price">{{ pizza.price_small }} ₴</span>
+                    </a>
+                    <a href="{% url 'order_create' pizza.pk %}?size=medium" class="size-option">
+                        <span class="size-option__label">Середня</span>
+                        <span class="size-option__name">30 см</span>
+                        <span class="size-option__price">{{ pizza.price_medium }} ₴</span>
+                    </a>
+                    <a href="{% url 'order_create' pizza.pk %}?size=large" class="size-option">
+                        <span class="size-option__label">Велика</span>
+                        <span class="size-option__name">35 см</span>
+                        <span class="size-option__price">{{ pizza.price_large }} ₴</span>
+                    </a>
+                    <a href="{% url 'order_create' pizza.pk %}?size=xl" class="size-option">
+                        <span class="size-option__label">XL</span>
+                        <span class="size-option__name">40 см</span>
+                        <span class="size-option__price">{{ pizza.price_xl }} ₴</span>
+                    </a>
+                </div>
+            </div>
+            <div style="margin-top:24px">
+                <a href="{% url 'menu' %}" class="btn btn-secondary">← Назад до меню</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

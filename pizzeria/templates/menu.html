@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Меню піц - PizzaHubEgorka{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-inner">
+        <span class="hero-tag">Свіжа піца щодня</span>
+        <h1>Справжня <em>італійська</em> піца</h1>
+        <p>Свіжі інгредієнти, дров'яна піч, доставка за 45 хвилин по всьому місту</p>
+        <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary" style="padding:14px 32px">Переглянути меню</a>
+            <a href="{% url 'order_list' %}" class="btn btn-outline" style="padding:14px 32px">Мої замовлення</a>
+        </div>
+    </div>
+</section>
+
+<div class="main-content" id="menu">
+    <div class="page-header">
+        <h1>Наше меню</h1>
+        <p class="page-subtitle">Оберіть піцу та оформіть замовлення онлайн</p>
+    </div>
+
+    {% if categories %}
+    <div class="category-filter">
+        <a href="{% url 'menu' %}" class="filter-btn {% if not selected_cat %}filter-btn--active{% endif %}">Всі</a>
+        {% for cat in categories %}
+        <a href="?category={{ cat.slug }}" class="filter-btn {% if selected_cat == cat.slug %}filter-btn--active{% endif %}">{{ cat.name }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="pizza-grid">
+        {% for pizza in pizzas %}
+        <div class="pizza-card {% if not pizza.is_available %}pizza-card--unavailable{% endif %}">
+            <div class="pizza-card__image">
+                {% if pizza.image_url %}
+                <img src="{{ pizza.image_url }}" alt="{{ pizza.name }}" loading="lazy">
+                {% else %}
+                <div class="pizza-card__image-placeholder">🍕</div>
+                {% endif %}
+                <div class="pizza-card__badges">
+                    {% if pizza.is_new %}<span class="pizza-badge pizza-badge--new">Новинка</span>{% endif %}
+                    {% if pizza.is_spicy %}<span class="pizza-badge pizza-badge--spicy">Гостра</span>{% endif %}
+                    {% if pizza.is_vegetarian %}<span class="pizza-badge pizza-badge--veg">Вег</span>{% endif %}
+                    {% if not pizza.is_available %}<span class="pizza-badge pizza-badge--unavailable">Недоступна</span>{% endif %}
+                </div>
+            </div>
+
+            <div class="pizza-card__body">
+                <h2 class="pizza-card__name">{{ pizza.name }}</h2>
+                {% if pizza.ingredients %}
+                <p class="pizza-card__ingredients">{{ pizza.ingredients }}</p>
+                {% endif %}
+                <div class="price-table">
+                    <div class="price-cell"><span class="price-cell__size">25см</span><span class="price-cell__amount">{{ pizza.price_small }}₴</span></div>
+                    <div class="price-cell"><span class="price-cell__size">30см</span><span class="price-cell__amount">{{ pizza.price_medium }}₴</span></div>
+                    <div class="price-cell"><span class="price-cell__size">35см</span><span class="price-cell__amount">{{ pizza.price_large }}₴</span></div>
+                    <div class="price-cell"><span class="price-cell__size">40см</span><span class="price-cell__amount">{{ pizza.price_xl }}₴</span></div>
+                </div>
+            </div>
+
+            <div class="pizza-card__footer">
+                <div class="pizza-price">
+                    <span class="price-from">від</span>
+                    <span class="price-amount">{{ pizza.price_small }}</span>
+                    <span class="price-unit"> грн</span>
+                </div>
+                {% if pizza.is_available %}
+                <a href="{% url 'pizza_detail' pizza.pk %}" class="btn btn-primary">Замовити</a>
+                {% else %}
+                <button class="btn btn-disabled" disabled>Недоступна</button>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty-state">
+            <span class="empty-emoji">🍕</span>
+            <p>Піц не знайдено</p>
+            <a href="{% url 'menu' %}" class="btn btn-secondary">Показати всі</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
